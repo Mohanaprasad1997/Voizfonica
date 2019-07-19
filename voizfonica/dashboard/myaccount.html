@@ -61,8 +61,41 @@ footer{padding:25px 0;text-align:center;  width: -webkit-fill-available;  }
   padding-right: 0px;
 }
 
+* {box-sizing: border-box}
 
-</Style>
+/* Set height of body and the document to 100% */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+  
+}
+
+/* Style tab links */
+.tablink {
+  background-color: #4680ff;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 33.33%;
+}
+
+.tablink:hover {
+  background-color: #4680ff;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: black;
+  display:inline-block;
+  padding: 100px 20px;
+  height: 100%;
+}
+</style>
   </head>
   <body>
     <!-- navbar-->
@@ -96,25 +129,18 @@ footer{padding:25px 0;text-align:center;  width: -webkit-fill-available;  }
         <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family"></div>
         
       </div>
+	  
       <div class="page-holder w-100 d-flex flex-wrap" >
-        <div class="container-fluid px-xl-5">
-         
-  
-  <div id="contactdetail" style="font-size: 20px;margin-top: 60px;">
-  <label class="radio-inline">
-    <input type="radio" name="optradio" onclick="getElementById('demo3').style.display = "block"" checked>PRE-PAID</label>
-  <label class="radio-inline">
-    <input type="radio" name="optradio" onclick="getElementById('demo3').style.display = "block"">POST-PAID</label>
-  <label class="radio-inline">
-    <input type="radio" name="optradio" onclick="getElementById('demo3').style.display = "block"">DONGLE</label>
-   
+        <div class="container-fluid px-xl-5">  
+   <div class="page-holder w-100 d-flex flex-wrap">
+  <div id="contactdetail" style="font-size: 20px;margin-top: 10px;margin-bottom: 0px;">
+  <button class="tablink" onclick="openPage('Prepaid', this)" id="defaultOpen" style="font-family: Roboto Slab">Prepaid</button>
+<button class="tablink" onclick="openPage('Postpaid', this)" style="font-family: Roboto Slab">Postpaid</button>
+<button class="tablink" onclick="openPage('Dongle ', this)" style="font-family: Roboto Slab">Dongle</button>
 
-  <div id="demo1" display:none style=" padding-top: 20px;
-    padding-bottom: 20px;
-    padding-right: 20px;
-    padding-left: 20px;"
->
-   <div class="panel-group" >
+<div id="Prepaid" class="tabcontent">
+ <h3 style="font-family: Roboto Slab;color: black">PREPAID</h3>
+<div class="panel-group" >
     
     <div class="panel panel-primary border border-primary" style="padding: 15px 0 15px 0">
       <div class="panel-heading" ><label>My Number</label></div>
@@ -135,6 +161,58 @@ footer{padding:25px 0;text-align:center;  width: -webkit-fill-available;  }
     </div>
  
       </div>
+</div>
+
+<div id="Postpaid" class="tabcontent">
+ <h3 style="font-family: Roboto Slab;color: black">POSTPAID</h3>
+<div class="panel-group" >
+    
+    <div class="panel panel-primary border border-primary" style="padding: 15px 0 15px 0">
+      <div class="panel-heading" ><label>My Number</label></div>
+      <div class="panel-body" ><label>Number :</label> ----------</div>
+      <div class="panel-body" ><label>Type  :</label> ----------</div>
+      <div class="panel-body" ><label>Balance :</label> ----------</div>
+      
+    </div>
+
+    <br>
+
+      <div class="panel panel-primary border border-primary" style="padding: 15px 0 15px 0">
+      <div class="panel-heading" ><label>Other Number</label></div>
+      <div class="panel-body" ><label>Number : ----------</label></div>
+      <div class="panel-body" ><label>Type   : ----------</label></div>
+      <div class="panel-body" ><label>Balance : ----------</label></div>
+      
+    </div>
+ 
+      </div>
+</div>
+
+<div id="Dongle " class="tabcontent">
+ <h3 style="font-family: Roboto Slab;color: black">DONGLE</h3>
+  <div class="panel-group" >
+    
+    <div class="panel panel-primary border border-primary" style="padding: 15px 0 15px 0">
+      <div class="panel-heading" ><label>My Number</label></div>
+      <div class="panel-body" ><label>Number :</label> ----------</div>
+      <div class="panel-body" ><label>Type  :</label> ----------</div>
+      <div class="panel-body" ><label>Balance :</label> ----------</div>
+      
+    </div>
+
+    <br>
+
+      <div class="panel panel-primary border border-primary" style="padding: 15px 0 15px 0">
+      <div class="panel-heading" ><label>Other Number</label></div>
+      <div class="panel-body" ><label>Number : ----------</label></div>
+      <div class="panel-body" ><label>Type   : ----------</label></div>
+      <div class="panel-body" ><label>Balance : ----------</label></div>
+      
+    </div>
+ 
+      </div>
+</div>
+   
     </div>
         </div>
 	
@@ -175,7 +253,27 @@ footer{padding:25px 0;text-align:center;  width: -webkit-fill-available;  }
     </div>
 
 
+<script>
+function openPage(pageName,elmnt) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "#bbbbbb";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = "";
+}
 
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+
+</script>
     
     <!-- JavaScript files-->
     <script src="vendor/jquery/jquery.min.js"></script>
